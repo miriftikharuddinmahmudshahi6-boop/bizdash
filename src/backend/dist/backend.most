@@ -1,0 +1,72 @@
+// Version: 1.0.0
+type ActivityEventKind__804443138 =
+  {#transaction_added; #user_created; #user_deactivated};
+type ActivityEvent__215050660 =
+  {
+    description : Text;
+    id : Nat;
+    kind : ActivityEventKind__804443138;
+    timestamp : Int
+  };
+type Int__270357528 = Int__616954475;
+type Int__616954475 = Int;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__585180226<T> =
+  {
+    var next : ?Node__585180226<T>;
+    var previous : ?Node__585180226<T>;
+    value : T
+  };
+type Time__796480547 = Int__270357528;
+type Time__900049286 = Time__796480547;
+type Timestamp__301639476 = Time__900049286;
+type TransactionCategory__793249186 =
+  {#other; #sales; #service; #subscription};
+type TransactionId__138870153 = Nat;
+type TransactionStatus__901270490 = {#completed; #pending; #refunded};
+type Transaction__717772914 =
+  {
+    amount : Nat;
+    category : TransactionCategory__793249186;
+    date : Timestamp__301639476;
+    description : Text;
+    id : TransactionId__138870153;
+    status : TransactionStatus__901270490
+  };
+type UserId__158757552 = Nat;
+type UserRole__41952412 = {#admin; #viewer};
+type UserStatus__357598751 = {#active; #inactive};
+type User__98118558 =
+  {
+    var email : Text;
+    id : UserId__158757552;
+    joinDate : Timestamp__301639476;
+    var name : Text;
+    var role : UserRole__41952412;
+    var status : UserStatus__357598751
+  };
+actor {
+  stable activityLog :
+    {
+      var back : ?Node__585180226<ActivityEvent__215050660>;
+      var front : ?Node__585180226<ActivityEvent__215050660>;
+      var size : Nat__490723111
+    };
+  stable nextActivityId : {var val : Nat};
+  stable nextTransactionId : {var val : Nat};
+  stable nextUserId : {var val : Nat};
+  stable seeded : {var val : Bool};
+  stable transactions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Transaction__717772914]];
+      var elementIndex : Nat__490723111
+    };
+  stable users :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?User__98118558]];
+      var elementIndex : Nat__490723111
+    }
+};

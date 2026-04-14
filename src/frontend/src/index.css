@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Fraunces";
+    --font-body: "DM Sans";
+    --font-mono: "Geist Mono";
+    --radius: 0.5rem;
+
+    --background: 0.98 0 0;
+    --foreground: 0.2 0 0;
+    --card: 0.96 0 0;
+    --card-foreground: 0.15 0 0;
+    --popover: 0.96 0 0;
+    --popover-foreground: 0.15 0 0;
+
+    --primary: 0.5 0.15 210;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.92 0 0;
+    --secondary-foreground: 0.25 0 0;
+    --muted: 0.9 0 0;
+    --muted-foreground: 0.45 0 0;
+
+    --accent: 0.65 0.2 45;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0 0;
+    --input: 0.88 0 0;
+    --ring: 0.5 0.15 210;
+
+    --chart-1: 0.65 0.2 45;
+    --chart-2: 0.5 0.15 210;
+    --chart-3: 0.55 0.18 160;
+    --chart-4: 0.62 0.19 100;
+    --chart-5: 0.72 0.16 70;
+
+    --sidebar: 0.98 0 0;
+    --sidebar-foreground: 0.2 0 0;
+    --sidebar-primary: 0.5 0.15 210;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.9 0 0;
+    --sidebar-accent-foreground: 0.3 0 0;
+    --sidebar-border: 0.88 0 0;
+    --sidebar-ring: 0.5 0.15 210;
+  }
+
+  .dark {
+    --background: 0.12 0 0;
+    --foreground: 0.92 0 0;
+    --card: 0.16 0 0;
+    --card-foreground: 0.92 0 0;
+    --popover: 0.2 0 0;
+    --popover-foreground: 0.92 0 0;
+
+    --primary: 0.65 0.18 210;
+    --primary-foreground: 0.12 0 0;
+
+    --secondary: 0.2 0 0;
+    --secondary-foreground: 0.88 0 0;
+    --muted: 0.2 0 0;
+    --muted-foreground: 0.6 0 0;
+
+    --accent: 0.72 0.22 45;
+    --accent-foreground: 0.12 0 0;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.12 0 0;
+
+    --border: 0.26 0 0;
+    --input: 0.26 0 0;
+    --ring: 0.65 0.18 210;
+
+    --chart-1: 0.72 0.22 45;
+    --chart-2: 0.65 0.18 210;
+    --chart-3: 0.68 0.2 160;
+    --chart-4: 0.7 0.21 100;
+    --chart-5: 0.78 0.18 70;
+
+    --sidebar: 0.16 0 0;
+    --sidebar-foreground: 0.92 0 0;
+    --sidebar-primary: 0.65 0.18 210;
+    --sidebar-primary-foreground: 0.12 0 0;
+    --sidebar-accent: 0.2 0 0;
+    --sidebar-accent-foreground: 0.88 0 0;
+    --sidebar-border: 0.26 0 0;
+    --sidebar-ring: 0.65 0.18 210;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .data-cell {
+    @apply font-mono text-sm tracking-tight;
+  }
+
+  .shadow-card {
+    @apply shadow-[0_1px_3px_0_rgba(0,0,0,0.08)];
+  }
+
+  .shadow-elevated {
+    @apply shadow-[0_4px_12px_0_rgba(0,0,0,0.12)];
+  }
+
+  .kpi-value {
+    @apply text-3xl font-display font-semibold tracking-tight;
+  }
+}

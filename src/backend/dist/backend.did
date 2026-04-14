@@ -1,0 +1,108 @@
+type UserStatus = 
+ variant {
+   active;
+   inactive;
+ };
+type UserRole = 
+ variant {
+   admin;
+   viewer;
+ };
+type UserPublic = 
+ record {
+   email: text;
+   id: UserId;
+   joinDate: Timestamp;
+   name: text;
+   role: UserRole;
+   status: UserStatus;
+ };
+type UserId = nat;
+type UpdateUserRequest = 
+ record {
+   email: opt text;
+   name: opt text;
+   role: opt UserRole;
+   status: opt UserStatus;
+ };
+type TransactionStatus = 
+ variant {
+   completed;
+   pending;
+   refunded;
+ };
+type TransactionPage = 
+ record {
+   items: vec Transaction;
+   limit: nat;
+   offset: nat;
+   total: nat;
+ };
+type TransactionId = nat;
+type TransactionCategory = 
+ variant {
+   other;
+   sales;
+   "service";
+   subscription;
+ };
+type Transaction = 
+ record {
+   amount: nat;
+   category: TransactionCategory;
+   date: Timestamp;
+   description: text;
+   id: TransactionId;
+   status: TransactionStatus;
+ };
+type Timestamp = int;
+type RevenueAggregates = 
+ record {
+   revenueThisWeek: nat;
+   revenueToday: nat;
+   revenueYesterday: nat;
+   totalRevenue: nat;
+ };
+type DashboardKPIs = 
+ record {
+   activeUsers: nat;
+   revenueThisWeek: nat;
+   revenueToday: nat;
+   revenueYesterday: nat;
+   totalRevenue: nat;
+   totalUsers: nat;
+ };
+type CreateUserRequest = 
+ record {
+   email: text;
+   name: text;
+   role: UserRole;
+ };
+type ActivityEventKind = 
+ variant {
+   transaction_added;
+   user_created;
+   user_deactivated;
+ };
+type ActivityEvent = 
+ record {
+   description: text;
+   id: nat;
+   kind: ActivityEventKind;
+   timestamp: int;
+ };
+service : {
+  addTransaction: (amount: nat, category: TransactionCategory, status:
+   TransactionStatus, description: text) -> (Transaction);
+  createUser: (req: CreateUserRequest) -> (UserPublic);
+  deleteUser: (id: UserId) -> (bool);
+  getDashboardKPIs: () -> (DashboardKPIs) query;
+  getRecentActivity: () -> (vec ActivityEvent) query;
+  getRevenueAggregates: () -> (RevenueAggregates) query;
+  getTransaction: (id: TransactionId) -> (opt Transaction) query;
+  getUser: (id: UserId) -> (opt UserPublic) query;
+  listTransactions: (offset: nat, limit: nat) -> (TransactionPage) query;
+  listUsers: () -> (vec UserPublic) query;
+  searchUsers: (searchTerm: text) -> (vec UserPublic) query;
+  updateUser: (id: UserId, req: UpdateUserRequest) -> (opt UserPublic);
+}

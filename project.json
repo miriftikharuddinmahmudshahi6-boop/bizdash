@@ -1,0 +1,22 @@
+{
+  "overview": "A business intelligence dashboard for tracking revenue, managing users, and monitoring daily operations. Features metric cards, transaction lists, user management with CRUD, and trend charts — all behind secure login.",
+  "features": [
+    "Revenue tracking with daily/weekly/monthly trends",
+    "Transaction list with status and filters",
+    "User management — add, edit, deactivate, delete",
+    "Business health dashboard with KPI cards",
+    "Secure login via Internet Identity",
+    "Recent activity feed",
+    "Day-over-day comparison charts"
+  ],
+  "category": "productivity",
+  "tags": [
+    "dashboard",
+    "revenue",
+    "user-management",
+    "business-intelligence",
+    "analytics",
+    "admin"
+  ],
+  "last_updated": "2026-04-14T09:49:03.801Z"
+}
